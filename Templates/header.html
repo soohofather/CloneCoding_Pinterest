@@ -4,7 +4,7 @@
             <h1 class="pragmatic_logo">Pragmatic</h1>
         </div>
         <div>
-            <span>nav1</span>
+            <span><a href="{% url 'accountapp:hello_world' %}">home</a></span>
             <span>nav2</span>
             <span>nav3</span>
             {% if not user.is_authenticated %}
@@ -12,6 +12,9 @@
                     <span>login</span>
                 </a>
             {% else %}
+                <a href="{% url 'accountapp:detail' user.pk %}?next={{ request.path }}">
+                    <span>MyPage</span>
+                </a>
                 <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">
                     <span>logout</span>
                 </a>
